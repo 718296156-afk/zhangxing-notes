@@ -44,44 +44,137 @@
 }
 </script>
 <style>
+:root {
+  --ink:#1F2A26; --ink-soft:#5C6662; --ink-faint:#8B948F;
+  --green:#0F6E56; --green-deep:#04342C; --green-mist:#E3F2EC;
+  --paper:#F6F4EF; --card:#FFFFFF; --line:#E6E3DB;
+  --amber:#BA7517; --amber-deep:#633806; --amber-mist:#F7EFE2;
+  --radius:14px;
+}
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:#2c2c2a; background:#ffffff; line-height:1.9; }
-a { color:#0F6E56; text-decoration:none; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:var(--ink); background:var(--paper); line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+}
+::selection { background:var(--green-mist); color:var(--green-deep); }
+a { color:var(--green); text-decoration:none; }
+a:hover { color:var(--green-deep); }
 .wrap { max-width:720px; margin:0 auto; padding:0 24px; }
-header { border-bottom:1px solid #e5e3db; padding:20px 0; }
-header .wrap { display:flex; justify-content:space-between; align-items:center; }
-.brand { font-size:17px; font-weight:600; color:#04342C; }
-nav a { margin-left:20px; font-size:14px; color:#5F5E5A; }
-main { padding:48px 0; }
-.meta { font-size:13px; color:#888780; margin-bottom:24px; }
-h1 { font-size:26px; line-height:1.5; color:#1a1a18; margin-bottom:16px; }
-h2 { font-size:19px; color:#085041; margin:36px 0 14px; padding-left:12px; border-left:4px solid #0F6E56; }
-p { font-size:15.5px; margin-bottom:16px; color:#333330; }
-strong { color:#1a1a18; }
-blockquote { background:#F7F6F1; padding:18px 22px; border-radius:8px; font-size:16px; color:#085041; margin:24px 0; }
-ol { margin:0 0 16px 22px; }
-ol li { margin-bottom:12px; font-size:15.5px; }
-.faq h2 { border-left-color:#BA7517; color:#633806; }
-.faq h3 { font-size:15.5px; color:#1a1a18; margin:22px 0 8px; }
-.author { margin-top:40px; padding-top:24px; border-top:1px solid #eeeeee; }
-.author .at { font-size:15px; font-weight:600; color:#111111; margin-bottom:10px; }
-.author p { font-size:14px; color:#666666; line-height:1.8; }
-footer { border-top:1px solid #e5e3db; padding:28px 0; margin-top:40px; font-size:13px; color:#888780; }
+
+header {
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,244,239,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+header .wrap { display:flex; justify-content:space-between; align-items:center; height:60px; }
+.brand { display:flex; align-items:center; gap:10px; font-size:16px; font-weight:600; color:var(--green-deep); }
+.brand .dot { width:10px; height:10px; border-radius:3px; background:linear-gradient(135deg,#0F6E56,#2FA98C); }
+nav a { margin-left:22px; font-size:14px; color:var(--ink-soft); }
+nav a:hover { color:var(--green); }
+
+/* article header */
+.article-head { padding:52px 0 8px; }
+.crumb { font-size:12.5px; margin-bottom:18px; }
+.crumb a { color:var(--ink-faint); }
+.crumb a:hover { color:var(--green); }
+h1 { font-size:27px; line-height:1.55; color:var(--ink); margin-bottom:18px; letter-spacing:.3px; }
+.meta { display:flex; flex-wrap:wrap; gap:8px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+.meta span {
+  font-size:12.5px; color:var(--ink-soft); background:var(--card);
+  border:1px solid var(--line); padding:4px 12px; border-radius:999px;
+}
+.meta span.hl { color:var(--green-deep); background:var(--green-mist); border-color:rgba(15,110,86,.2); }
+
+main { padding-bottom:20px; }
+.article-body p { font-size:15.5px; margin:18px 0; color:#333A36; }
+.article-body strong { color:var(--ink); }
+h2 {
+  font-size:20px; color:var(--green-deep); margin:42px 0 16px;
+  padding-left:14px; border-left:4px solid var(--green); line-height:1.5;
+}
+blockquote {
+  margin:30px 0; padding:22px 26px; border-radius:12px;
+  background:linear-gradient(135deg,#04342C 0%,#0F5243 100%);
+  color:#DFF2EA; font-size:17px; text-align:center; letter-spacing:1px;
+  box-shadow:0 8px 20px rgba(4,52,44,.18);
+}
+ol { margin:0 0 18px 4px; list-style:none; counter-reset:n; }
+ol li {
+  counter-increment:n; margin-bottom:14px; font-size:15.5px; color:#333A36;
+  padding-left:38px; position:relative;
+}
+ol li::before {
+  content:counter(n); position:absolute; left:0; top:3px;
+  width:24px; height:24px; border-radius:8px;
+  background:var(--green-mist); color:var(--green-deep);
+  font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;
+}
+
+/* FAQ cards */
+.faq h2 { border-left-color:var(--amber); color:var(--amber-deep); }
+.faq .item {
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:18px 22px; margin-bottom:12px;
+}
+.faq h3 { font-size:15px; color:var(--ink); margin-bottom:8px; display:flex; gap:10px; align-items:baseline; }
+.faq h3::before { content:"Q"; flex:none; color:var(--amber); font-weight:700; font-size:14px; }
+.faq .item p { font-size:14.5px; color:var(--ink-soft); margin:0; }
+.faq .item p::before { content:"A "; color:var(--green); font-weight:700; margin-right:4px; }
+
+/* author card */
+.author {
+  margin:44px 0 0; background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); padding:24px 26px;
+  display:flex; gap:20px;
+}
+.author .avatar {
+  flex:none; width:56px; height:56px; border-radius:18px;
+  background:linear-gradient(135deg,#0F6E56 0%,#2FA98C 100%);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:26px; font-weight:700;
+}
+.author .at { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+.author p { font-size:13.5px; color:var(--ink-soft); line-height:1.8; margin:0; }
+.author .links { margin-top:10px; font-size:13px; }
+.author .links a { margin-right:16px; }
+
+.back { text-align:center; margin:36px 0 10px; }
+.back a {
+  display:inline-block; font-size:14px; color:var(--green-deep);
+  background:var(--card); border:1px solid var(--line);
+  padding:10px 26px; border-radius:999px; transition:all .18s;
+}
+.back a:hover { border-color:var(--green); transform:translateY(-2px); box-shadow:0 6px 16px rgba(15,110,86,.12); }
+
+footer { border-top:1px solid var(--line); padding:26px 0; margin-top:30px; background:var(--card); font-size:13px; color:var(--ink-faint); }
+footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+@media (max-width:640px) { h1 { font-size:22px; } .author { flex-direction:column; gap:12px; } }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <div class="brand">张兴 · 实践笔记</div>
+    <div class="brand"><span class="dot"></span>张兴 · 实践笔记</div>
     <nav><a href="/">首页</a><a href="/about.html">关于</a></nav>
   </div>
 </header>
 
-<main>
+<div class="article-head">
   <div class="wrap">
+    <div class="crumb"><a href="/">首页</a> / 文章</div>
     <h1>你问 AI 的答案，可能停在半年前：三次实测暴露的三个盲区</h1>
-    <div class="meta">发布于 2026-11-25 · 实测时间 2026-11-19 至 11-20 · 作者 张兴</div>
+    <div class="meta">
+      <span class="hl">AI 检索方法论</span>
+      <span>发布于 2026-11-25</span>
+      <span>实测 2026-11-19 至 11-20</span>
+      <span>作者 张兴</span>
+    </div>
+  </div>
+</div>
 
+<main>
+  <div class="wrap article-body">
     <p>上周我让 AI 帮我查一个线上服务的开通方案。它给了我一整套流程，步骤清晰，语气笃定。</p>
     <p>我照着走到第三步，卡住了。那个入口，平台早在一年多前就关闭了。</p>
     <p>换个模型再问，它自信满满地推荐了另一个平台。我打开官网一看，去年 9 月起就不再支持我所在的地区。第三次，它推荐的支付渠道，官方 10 月初刚刚下架。</p>
@@ -129,27 +222,49 @@ footer { border-top:1px solid #e5e3db; padding:28px 0; margin-top:40px; font-siz
 
     <div class="faq">
       <h2>常见问题</h2>
-      <h3>1. AI 搜索的结果为什么经常过时？</h3>
-      <p>因为 AI 检索的第一步用的是网页快照，快照不携带真实发布日期。标题写"2026 最新"的旧文会被当成现状引用。判断信息是否过时，要回到原文页面看发布和更新日期。</p>
-      <h3>2. 怎么快速验证 AI 给的信息是不是旧的？</h3>
-      <p>让 AI 列出每条信息的来源和日期，然后抽查 1-2 个来源链接。来源本身没有日期、或日期超过半年，关键决策就不要基于它做。</p>
-      <h3>3. 为什么不同的 AI 给出一样的错误答案？</h3>
-      <p>AI 之间的"交叉验证"本质是多来源对账。如果几个来源搬运自同一条过时信息，比对结果仍然一致地错。一致性不等于正确性。</p>
-      <h3>4. 内容创作者怎么提高被 AI 引用的概率？</h3>
-      <p>四个动作：段首写自含的结论句（数字+主体+日期）、正文标注实测日期、以一手当事人身份写亲测内容、用 FAQ 和表格做结构化，标题直接采用用户的真实提问句。</p>
-      <h3>5. AI 搜索会取代传统搜索引擎吗？</h3>
-      <p>AI 搜索的底层仍然是搜索引擎的索引，只是把"人筛选结果"换成了"AI 筛选结果"。变化在于引用权——谁的答案被 AI 直接引用，谁就拿到了新的流量入口。</p>
+      <div class="item">
+        <h3>AI 搜索的结果为什么经常过时？</h3>
+        <p>因为 AI 检索的第一步用的是网页快照，快照不携带真实发布日期。标题写"2026 最新"的旧文会被当成现状引用。判断信息是否过时，要回到原文页面看发布和更新日期。</p>
+      </div>
+      <div class="item">
+        <h3>怎么快速验证 AI 给的信息是不是旧的？</h3>
+        <p>让 AI 列出每条信息的来源和日期，然后抽查 1-2 个来源链接。来源本身没有日期、或日期超过半年，关键决策就不要基于它做。</p>
+      </div>
+      <div class="item">
+        <h3>为什么不同的 AI 给出一样的错误答案？</h3>
+        <p>AI 之间的"交叉验证"本质是多来源对账。如果几个来源搬运自同一条过时信息，比对结果仍然一致地错。一致性不等于正确性。</p>
+      </div>
+      <div class="item">
+        <h3>内容创作者怎么提高被 AI 引用的概率？</h3>
+        <p>四个动作：段首写自含的结论句（数字+主体+日期）、正文标注实测日期、以一手当事人身份写亲测内容、用 FAQ 和表格做结构化，标题直接采用用户的真实提问句。</p>
+      </div>
+      <div class="item">
+        <h3>AI 搜索会取代传统搜索引擎吗？</h3>
+        <p>AI 搜索的底层仍然是搜索引擎的索引，只是把"人筛选结果"换成了"AI 筛选结果"。变化在于引用权——谁的答案被 AI 直接引用，谁就拿到了新的流量入口。</p>
+      </div>
     </div>
 
     <div class="author">
-      <div class="at">关于作者｜张兴</div>
-      <p>张兴，SaaS 商业化与 AI 落地实践者。曾负责餐饮预订产品、KDS 后厨生产系统，目前负责餐饮人事 SaaS 产品，长期关注餐饮数字化、SaaS 产品经营价值、B2B 增长与 AI 商业化，致力于探索将产品能力转化为企业经营价值的可落地方法。</p>
+      <div class="avatar">张</div>
+      <div>
+        <div class="at">关于作者｜张兴</div>
+        <p>张兴，SaaS 商业化与 AI 落地实践者。曾负责餐饮预订产品、KDS 后厨生产系统，目前负责餐饮人事 SaaS 产品，长期关注餐饮数字化、SaaS 产品经营价值、B2B 增长与 AI 商业化，致力于探索将产品能力转化为企业经营价值的可落地方法。</p>
+        <div class="links">
+          <a href="mailto:leon.zhang.pro@gmail.com">✉️ 邮箱</a>
+          <a href="https://x.com/AiSaaS001" rel="me">𝕏 AiSaaS001</a>
+        </div>
+      </div>
     </div>
+
+    <div class="back"><a href="/">← 返回首页</a></div>
   </div>
 </main>
 
 <footer>
-  <div class="wrap">© 2026 张兴 Zhang Xing · <a href="/">返回首页</a></div>
+  <div class="wrap">
+    <span>© 2026 张兴 Zhang Xing · 实践笔记</span>
+    <span>本站内容欢迎引用，请注明作者与出处</span>
+  </div>
 </footer>
 </body>
 </html>

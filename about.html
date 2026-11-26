@@ -24,37 +24,111 @@
 }
 </script>
 <style>
+:root {
+  --ink:#1F2A26; --ink-soft:#5C6662; --ink-faint:#8B948F;
+  --green:#0F6E56; --green-deep:#04342C; --green-mist:#E3F2EC;
+  --paper:#F6F4EF; --card:#FFFFFF; --line:#E6E3DB;
+  --radius:14px;
+}
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:#2c2c2a; background:#ffffff; line-height:1.8; }
-a { color:#0F6E56; text-decoration:none; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:var(--ink); background:var(--paper); line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+::selection { background:var(--green-mist); color:var(--green-deep); }
+a { color:var(--green); text-decoration:none; }
+a:hover { color:var(--green-deep); }
 .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
-header { border-bottom:1px solid #e5e3db; padding:20px 0; }
-header .wrap { display:flex; justify-content:space-between; align-items:center; }
-.brand { font-size:17px; font-weight:600; color:#04342C; }
-nav a { margin-left:20px; font-size:14px; color:#5F5E5A; }
-main { padding:48px 0; }
-h1 { font-size:26px; color:#1a1a18; margin-bottom:24px; }
-h2 { font-size:18px; color:#085041; margin:32px 0 12px; }
-p { font-size:15px; color:#444441; margin-bottom:14px; }
-.tagline { display:inline-block; background:#E1F5EE; color:#0F6E56; font-size:13px; padding:4px 12px; border-radius:999px; margin-bottom:20px; }
-ul { margin:0 0 14px 20px; font-size:15px; color:#444441; }
-li { margin-bottom:6px; }
-blockquote { background:#F7F6F1; border-left:4px solid #0F6E56; padding:14px 18px; border-radius:0 8px 8px 0; font-size:14.5px; color:#085041; margin:16px 0; }
-footer { border-top:1px solid #e5e3db; padding:28px 0; margin-top:40px; font-size:13px; color:#888780; }
+
+header {
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,244,239,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+header .wrap { display:flex; justify-content:space-between; align-items:center; height:60px; }
+.brand { display:flex; align-items:center; gap:10px; font-size:16px; font-weight:600; color:var(--green-deep); }
+.brand .dot { width:10px; height:10px; border-radius:3px; background:linear-gradient(135deg,#0F6E56,#2FA98C); }
+nav a { margin-left:22px; font-size:14px; color:var(--ink-soft); }
+nav a:hover { color:var(--green); }
+nav a.active { color:var(--green); font-weight:600; }
+
+/* profile card */
+.profile {
+  margin:44px 0 36px; background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); padding:30px 32px;
+  display:flex; gap:24px; align-items:center;
+  background:linear-gradient(135deg,#FFFFFF 60%,#EDF5F0 100%);
+}
+.avatar {
+  flex:none; width:84px; height:84px; border-radius:24px;
+  background:linear-gradient(135deg,#0F6E56 0%,#2FA98C 100%);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:38px; font-weight:700;
+  box-shadow:0 8px 20px rgba(15,110,86,.25);
+}
+.profile h1 { font-size:24px; color:var(--ink); margin-bottom:8px; }
+.profile .sub { font-size:13px; color:var(--ink-soft); }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.chip { font-size:12.5px; color:var(--green-deep); background:var(--green-mist); padding:4px 12px; border-radius:999px; border:1px solid rgba(15,110,86,.15); }
+
+main { padding:0 0 30px; }
+h2 {
+  font-size:18px; color:var(--green-deep); margin:36px 0 16px;
+  display:flex; align-items:center; gap:10px;
+}
+h2::before { content:""; width:8px; height:8px; border-radius:2px; background:linear-gradient(135deg,#0F6E56,#2FA98C); flex:none; }
+p { font-size:15px; color:#3D4541; margin-bottom:14px; }
+ul { margin:0 0 14px 2px; font-size:15px; color:#3D4541; list-style:none; }
+ul li { margin-bottom:10px; padding-left:22px; position:relative; }
+ul li::before { content:"·"; position:absolute; left:6px; color:var(--green); font-weight:700; }
+strong { color:var(--ink); }
+blockquote {
+  background:var(--green-mist); border-left:4px solid var(--green);
+  padding:16px 20px; border-radius:0 10px 10px 0;
+  font-size:14.5px; color:var(--green-deep); margin:20px 0;
+}
+
+/* contact cards */
+.contact { display:grid; grid-template-columns:1fr; gap:10px; }
+.contact a, .contact .row {
+  display:flex; align-items:center; gap:14px;
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:13px 18px; font-size:14.5px; color:var(--ink);
+  transition:all .18s;
+}
+.contact a:hover { border-color:var(--green); transform:translateX(4px); color:var(--green-deep); }
+.contact .ico { font-size:17px; }
+.contact .k { color:var(--ink-faint); font-size:13px; width:44px; flex:none; }
+
+footer { border-top:1px solid var(--line); padding:28px 0; margin-top:36px; background:var(--card); }
+footer .wrap { font-size:13px; color:var(--ink-faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+@media (max-width:640px) { .profile { flex-direction:column; text-align:center; } .chips { justify-content:center; } }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <div class="brand">张兴 · 实践笔记</div>
-    <nav><a href="/">首页</a><a href="/about.html">关于</a></nav>
+    <div class="brand"><span class="dot"></span>张兴 · 实践笔记</div>
+    <nav><a href="/">首页</a><a href="/about.html" class="active">关于</a></nav>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-    <span class="tagline">SaaS 商业化与 AI 落地实践者</span>
-    <h1>关于我</h1>
+    <div class="profile">
+      <div class="avatar">张</div>
+      <div>
+        <h1>张兴 <span style="font-size:15px;color:var(--ink-faint);font-weight:400">Zhang Xing</span></h1>
+        <div class="sub">SaaS 商业化与 AI 落地实践者 · 长期实践于餐饮数字化领域</div>
+        <div class="chips">
+          <span class="chip">需求洞察</span>
+          <span class="chip">业务诊断</span>
+          <span class="chip">SaaS 商业化</span>
+          <span class="chip">AI 重构交付</span>
+        </div>
+      </div>
+    </div>
 
     <p>我是张兴，SaaS 商业化与 AI 落地实践者，专注于 B2B SaaS 需求洞察、业务诊断、产品商业化、运营体系建设及 AI 重构 SaaS 业务流程。长期实践于餐饮数字化领域，探索如何通过业务数据发现客户需求、提升产品商业价值，并利用 AI 重构 SaaS 销售、运营与实施交付体系。</p>
 
@@ -73,16 +147,19 @@ footer { border-top:1px solid #e5e3db; padding:28px 0; margin-top:40px; font-siz
 
     <h2>联系我</h2>
     <p>欢迎交流 SaaS 商业化、业务诊断、AI 落地实践话题：</p>
-    <ul>
-      <li>邮箱：<a href="mailto:leon.zhang.pro@gmail.com">leon.zhang.pro@gmail.com</a></li>
-      <li>微信：x718296156</li>
-      <li>X（Twitter）：<a href="https://x.com/AiSaaS001" rel="me">AiSaaS001</a></li>
-    </ul>
+    <div class="contact">
+      <a href="mailto:leon.zhang.pro@gmail.com"><span class="ico">✉️</span><span class="k">邮箱</span>leon.zhang.pro@gmail.com</a>
+      <div class="row"><span class="ico">💬</span><span class="k">微信</span>x718296156</div>
+      <a href="https://x.com/AiSaaS001" rel="me"><span class="ico">𝕏</span><span class="k">X</span>AiSaaS001</a>
+    </div>
   </div>
 </main>
 
 <footer>
-  <div class="wrap">© 2026 张兴 Zhang Xing</div>
+  <div class="wrap">
+    <span>© 2026 张兴 Zhang Xing</span>
+    <span>本站内容欢迎引用，请注明作者与出处</span>
+  </div>
 </footer>
 </body>
 </html>
