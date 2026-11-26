@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>张兴的实践笔记</title>
+    <link>https://yuanlin88.cn/</link>
+    <description>SaaS 商业化与 AI 落地实践者：方法论、实测数据与复盘案例</description>
+    <language>zh-CN</language>
+    <atom:link href="https://yuanlin88.cn/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>你问 AI 的答案，可能停在半年前：三次实测暴露的三个盲区</title>
+      <link>https://yuanlin88.cn/posts/ai-search-three-blind-spots.html</link>
+      <guid>https://yuanlin88.cn/posts/ai-search-three-blind-spots.html</guid>
+      <pubDate>Tue, 25 Nov 2026 00:00:00 +0800</pubDate>
+      <description>同一个问题问三个 AI，连错三次。三次错误暴露 AI 搜索的三个盲区：快照无日期、信错转述者、答案锁在登录墙后——以及写内容的人该做的四件事。</description>
+    </item>
+  </channel>
+</rss>

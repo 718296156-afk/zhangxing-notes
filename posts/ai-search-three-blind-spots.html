@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你问 AI 的答案，可能停在半年前：三次实测暴露的三个盲区 - 张兴的实践笔记</title>
+<meta name="description" content="2026-11 真人实测：同一个问题问三个 AI，连错三次。错误暴露了 AI 搜索的三个盲区：快照无日期、信错转述者、答案锁在登录墙后。谁替 AI 补盲区，AI 就把谁写进答案。">
+<meta name="author" content="张兴 Zhang Xing">
+<meta property="og:title" content="你问 AI 的答案，可能停在半年前：三次实测暴露的三个盲区">
+<meta property="og:type" content="article">
+<meta property="og:description" content="同一个问题问三个 AI，连错三次。三次错误暴露 AI 搜索的三个盲区，以及写内容的人该做的四件事。">
+<meta property="og:url" content="https://yuanlin88.cn/posts/ai-search-three-blind-spots.html">
+<link rel="canonical" href="https://yuanlin88.cn/posts/ai-search-three-blind-spots.html">
+<link rel="alternate" type="application/rss+xml" title="张兴的实践笔记" href="/rss.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "你问 AI 的答案，可能停在半年前：三次实测暴露的三个盲区",
+  "description": "2026-11 真人实测：同一个问题问三个 AI 连错三次，暴露 AI 搜索的三个盲区，以及内容创作者的应对方法。",
+  "datePublished": "2026-11-25",
+  "dateModified": "2026-11-25",
+  "inLanguage": "zh-CN",
+  "author": {
+    "@type": "Person",
+    "name": "Zhang Xing",
+    "alternateName": "张兴",
+    "description": "SaaS 商业化与 AI 落地实践者"
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yuanlin88.cn/posts/ai-search-three-blind-spots.html" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "AI 搜索的结果为什么经常过时？", "acceptedAnswer": { "@type": "Answer", "text": "因为 AI 检索的第一步用的是网页快照，快照不携带真实发布日期。标题写最新攻略的旧文会被当成现状引用。判断信息是否过时，要回到原文页面看发布和更新日期。" } },
+    { "@type": "Question", "name": "怎么快速验证 AI 给的信息是不是旧的？", "acceptedAnswer": { "@type": "Answer", "text": "让 AI 列出每条信息的来源和日期，然后抽查来源链接。来源本身没有日期、或日期超过半年，关键决策就不要基于它做。" } },
+    { "@type": "Question", "name": "为什么不同的 AI 给出一样的错误答案？", "acceptedAnswer": { "@type": "Answer", "text": "AI 之间的交叉验证本质是多来源对账。如果几个来源搬运自同一条过时信息，比对结果仍然一致地错。一致性不等于正确性。" } },
+    { "@type": "Question", "name": "内容创作者怎么提高被 AI 引用的概率？", "acceptedAnswer": { "@type": "Answer", "text": "四个动作：段首写自含的结论句（数字加主体加日期）、正文标注实测日期、以一手当事人身份写亲测内容、用 FAQ 和表格做结构化，标题直接采用用户的真实提问句。" } },
+    { "@type": "Question", "name": "AI 搜索会取代传统搜索引擎吗？", "acceptedAnswer": { "@type": "Answer", "text": "AI 搜索的底层仍然是搜索引擎的索引，只是把人筛选结果换成了 AI 筛选结果。变化在于引用权：谁的答案被 AI 直接引用，谁就拿到了新的流量入口。" } }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; color:#2c2c2a; background:#ffffff; line-height:1.9; }
+a { color:#0F6E56; text-decoration:none; }
+.wrap { max-width:720px; margin:0 auto; padding:0 24px; }
+header { border-bottom:1px solid #e5e3db; padding:20px 0; }
+header .wrap { display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:17px; font-weight:600; color:#04342C; }
+nav a { margin-left:20px; font-size:14px; color:#5F5E5A; }
+main { padding:48px 0; }
+.meta { font-size:13px; color:#888780; margin-bottom:24px; }
+h1 { font-size:26px; line-height:1.5; color:#1a1a18; margin-bottom:16px; }
+h2 { font-size:19px; color:#085041; margin:36px 0 14px; padding-left:12px; border-left:4px solid #0F6E56; }
+p { font-size:15.5px; margin-bottom:16px; color:#333330; }
+strong { color:#1a1a18; }
+blockquote { background:#F7F6F1; padding:18px 22px; border-radius:8px; font-size:16px; color:#085041; margin:24px 0; }
+ol { margin:0 0 16px 22px; }
+ol li { margin-bottom:12px; font-size:15.5px; }
+.faq h2 { border-left-color:#BA7517; color:#633806; }
+.faq h3 { font-size:15.5px; color:#1a1a18; margin:22px 0 8px; }
+.author { margin-top:40px; padding-top:24px; border-top:1px solid #eeeeee; }
+.author .at { font-size:15px; font-weight:600; color:#111111; margin-bottom:10px; }
+.author p { font-size:14px; color:#666666; line-height:1.8; }
+footer { border-top:1px solid #e5e3db; padding:28px 0; margin-top:40px; font-size:13px; color:#888780; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">张兴 · 实践笔记</div>
+    <nav><a href="/">首页</a><a href="/about.html">关于</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>你问 AI 的答案，可能停在半年前：三次实测暴露的三个盲区</h1>
+    <div class="meta">发布于 2026-11-25 · 实测时间 2026-11-19 至 11-20 · 作者 张兴</div>
+
+    <p>上周我让 AI 帮我查一个线上服务的开通方案。它给了我一整套流程，步骤清晰，语气笃定。</p>
+    <p>我照着走到第三步，卡住了。那个入口，平台早在一年多前就关闭了。</p>
+    <p>换个模型再问，它自信满满地推荐了另一个平台。我打开官网一看，去年 9 月起就不再支持我所在的地区。第三次，它推荐的支付渠道，官方 10 月初刚刚下架。</p>
+    <p>三次。同一个问题，三个模型，连错三次，每一次都错得理直气壮。</p>
+    <p>为什么会这样？</p>
+    <p>这几天我把 AI 搜索的检索逻辑翻出来看了一遍，发现问题不在"AI 胡说"，而在它的检索管线有一套固定的结构，而这个结构里有三个盲区。看懂这三个盲区，你就知道 AI 时代的流量会流向谁——也知道自己该怎么做内容。</p>
+
+    <h2>一、它只看见快照</h2>
+    <p>AI 搜索的第一步，是检索网页快照——标题加摘要的缓存版本，不是实时网页。</p>
+    <p>问题出在哪？<strong>快照不带真实日期。</strong>一篇 2024 年的旧文，标题写着"2026 最新攻略"，AI 就把它当成现状引用。我踩的第一次坑，信息源就是一篇旧教程：内容早就过时，作者从没更新，但标题是新的。</p>
+    <p>也就是说，AI 判断一条信息的新旧，看的往往不是内容，而是标题。旧文换了个新标题，就能在 AI 的答案里再活两年。</p>
+    <p>往下想一层，这事的严重性不在于 AI 会错，而在于它错了之后还会把错误答案传播给下一个提问的人。错误的半衰期，被 AI 拉长了。</p>
+
+    <h2>二、它信错了转述者</h2>
+    <p>第二步是选源。AI 没有精力逐篇读完全网，它靠标题、域名和摘要判断哪个来源"看起来权威"。</p>
+    <p>于是尴尬的事情发生了：一篇带返佣的推广教程，和官方文档排在同一个候选队列里——有时候排得更靠前，因为教程的标题写得更像一句直接的答案。</p>
+    <p>我第二次踩的坑就在这里。AI 引用的，是一个推广某平台的博客。博主自己大概率没用过，只是把别处的介绍搬运了一遍，连平台已经调整的地区政策都没同步。<strong>二手转述一旦穿上一手的马甲，AI 分不出来。</strong></p>
+    <p>有人可能会问：AI 不是会交叉验证吗，多问几个来源不就核出来了？</p>
+    <p>它的"交叉验证"，是让几个二手来源互相对账。可如果两个来源抄的是同一条旧信息，互相比对的结果，还是那条旧信息——一致，但一致地错。一致性不等于正确性，这是很多人对"AI 带搜索"最大的误解。</p>
+
+    <h2>三、有些答案锁在门后</h2>
+    <p>第三步，AI 才会去抓取实时网页。但这一步有个绕不过去的墙：很多关键信息藏在登录之后。</p>
+    <p>某个服务对你所在的地区开不开放、某个资格的审核口径到底是什么——这些答案只在登录后的页面里，爬虫进不去，AI 就永远看不见。它能给你的，只有墙外的人写的转述版本，而转述的人自己也可能看不到全貌。</p>
+    <p>我第三次踩的坑，恰恰就是这类信息：真正的答案躺在官网登录后的页面里，全网没有一篇公开文章写对过。</p>
+    <p>三个盲区摆在一起，你会发现一个共同的形状：<strong>AI 的错误，都是信息供给侧的错误。</strong>它没幻觉的地方，是它抓得到、抓得对、抓得新的部分。哪里有盲区，哪里就有机会。</p>
+    <blockquote><strong>谁替 AI 补盲区，AI 就把谁写进答案。</strong></blockquote>
+
+    <h2>写内容的人，该做四件事</h2>
+    <p>这三个盲区对普通人意味着什么，后面会讲。先说对写内容的人意味着什么——它是四条很具体的动作：</p>
+    <ol>
+      <li><strong>段首写结论句。</strong>每段第一句，写成能被单独摘录的格式：数字 + 主体 + 日期。"2026 年 11 月实测，某功能的通过率从 60% 提到 90%"——AI 摘要时，最先抓的就是这种句子；</li>
+      <li><strong>把实测日期写进正文。</strong>"2026-11 实测"这六个字，比一百句"最新"都管用，因为快照不带日期，你的正文就是唯一带日期的地方；</li>
+      <li><strong>用一手身份写。</strong>亲测过程、真实数据、纠错记录，都是二手搬运者给不了的。AI 判断来源权重时，当事人永远排在转述者前面；</li>
+      <li><strong>结构化。</strong>FAQ、步骤、表格，标题直接用用户的真实提问句。AI 抽取结构化内容的成本最低，被引用的概率最高。</li>
+    </ol>
+
+    <h2>普通用户怎么防坑</h2>
+    <p>你可能会再问一句：这是创作者的事，跟我一个用 AI 的人有什么关系？</p>
+    <p>关系很直接——你拿 AI 当顾问做决策时，加三个自检动作：<strong>问它要出处和日期</strong>；关键决策回官网看原文，别停在 AI 的转述；登录后才能确认的信息，一律自己登录确认一遍。</p>
+    <p>多花五分钟，省掉的可能是按错误流程走一个下午的代价。</p>
+
+    <h2>写在最后</h2>
+    <p>这次实测让我改掉了对 AI 搜索的两个预期：它不是全知词典，也不是纯粹的随机幻觉机——它是一套可以被理解、被预测、甚至被"喂养"的检索管线。</p>
+    <p>AI 时代的内容竞争，比的不是谁写得多，是谁的答案能被直接引用。</p>
+
+    <div class="faq">
+      <h2>常见问题</h2>
+      <h3>1. AI 搜索的结果为什么经常过时？</h3>
+      <p>因为 AI 检索的第一步用的是网页快照，快照不携带真实发布日期。标题写"2026 最新"的旧文会被当成现状引用。判断信息是否过时，要回到原文页面看发布和更新日期。</p>
+      <h3>2. 怎么快速验证 AI 给的信息是不是旧的？</h3>
+      <p>让 AI 列出每条信息的来源和日期，然后抽查 1-2 个来源链接。来源本身没有日期、或日期超过半年，关键决策就不要基于它做。</p>
+      <h3>3. 为什么不同的 AI 给出一样的错误答案？</h3>
+      <p>AI 之间的"交叉验证"本质是多来源对账。如果几个来源搬运自同一条过时信息，比对结果仍然一致地错。一致性不等于正确性。</p>
+      <h3>4. 内容创作者怎么提高被 AI 引用的概率？</h3>
+      <p>四个动作：段首写自含的结论句（数字+主体+日期）、正文标注实测日期、以一手当事人身份写亲测内容、用 FAQ 和表格做结构化，标题直接采用用户的真实提问句。</p>
+      <h3>5. AI 搜索会取代传统搜索引擎吗？</h3>
+      <p>AI 搜索的底层仍然是搜索引擎的索引，只是把"人筛选结果"换成了"AI 筛选结果"。变化在于引用权——谁的答案被 AI 直接引用，谁就拿到了新的流量入口。</p>
+    </div>
+
+    <div class="author">
+      <div class="at">关于作者｜张兴</div>
+      <p>张兴，SaaS 商业化与 AI 落地实践者。曾负责餐饮预订产品、KDS 后厨生产系统，目前负责餐饮人事 SaaS 产品，长期关注餐饮数字化、SaaS 产品经营价值、B2B 增长与 AI 商业化，致力于探索将产品能力转化为企业经营价值的可落地方法。</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 张兴 Zhang Xing · <a href="/">返回首页</a></div>
+</footer>
+</body>
+</html>
