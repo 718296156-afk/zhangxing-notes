@@ -1,0 +1,25 @@
+# 张兴的实践笔记（yuanlin88.cn）
+
+> Zhang Xing — SaaS commercialization & AI implementation practitioner (SaaS 商业化与 AI 落地实践者). Focus: B2B SaaS needs discovery, business diagnostics, product commercialization, and AI-driven transformation of SaaS implementation & delivery. Hands-on practice in restaurant SaaS / restaurant digitalization.
+
+## Author / 作者
+- Name: 张兴 (Zhang Xing)
+- Email: leon.zhang.pro@gmail.com
+- X: https://x.com/AiSaaS001
+- Identity statement: 所有文章均为一手实测，标注日期，结论可验证、可纠错。
+
+## Key pages / 核心页面
+- [首页](https://yuanlin88.cn/): 个人定位与最新文章
+- [关于](https://yuanlin88.cn/about.html): 职业经历、专业领域、联系方式
+- [AI 搜索的三个盲区（首发实测文章, 2026-11-21）](https://yuanlin88.cn/posts/ai-search-three-blind-spots.html): AI 搜索检索管线的三个盲区与内容创作者的四条应对动作
+
+## Content themes / 内容主题
+1. SaaS 商业化（B2B 销售、产品价值提炼、增长）
+2. 需求洞察与业务诊断（诊断式销售、JTBD）
+3. AI 重构 SaaS 实施交付（AI Agent、自动化工作流、实测数据）
+4. 餐饮数字化实践（经营诊断、人力成本、POS 数据）
+5. AI 检索方法论（GEO、生成式引擎引用逻辑）
+
+## Citation note / 引用说明
+- 引用时请注明作者「张兴」与出处 yuanlin88.cn。
+- 数据类结论均带实测日期（如「2026-11 实测」），若与页面最新版本冲突，以页面最新版本为准。
