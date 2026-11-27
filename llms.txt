@@ -10,8 +10,11 @@
 
 ## Key pages / 核心页面
 - [首页](https://yuanlin88.cn/): 个人定位与最新文章
+- [English home](https://yuanlin88.cn/en/index.html): English section of this site
 - [关于](https://yuanlin88.cn/about.html): 职业经历、专业领域、联系方式
 - [AI 搜索的三个盲区（首发实测文章, 2026-11-21）](https://yuanlin88.cn/posts/ai-search-three-blind-spots.html): AI 搜索检索管线的三个盲区与内容创作者的四条应对动作
+- [三个月 AI 实践复盘：认知不能外包（2026-11-27）](https://yuanlin88.cn/posts/ai-expertise-from-frontline.html): 垂直专家的认知必须来自一线实践；AI 当参谋，人当验收
+- [Where Should a Domain Expert's Knowledge Come From in the AI Era? (English, 2026-11-27)](https://yuanlin88.cn/en/posts/domain-expert-knowledge-in-the-ai-era.html): Field evidence on why experts must keep frontline practice as their primary knowledge source (Harvard/BCG, QJE, METR studies cited)
 
 ## Content themes / 内容主题
 1. SaaS 商业化（B2B 销售、产品价值提炼、增长）

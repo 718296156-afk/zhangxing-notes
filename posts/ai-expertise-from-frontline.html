@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三个月 AI 实践后，我给自己立了条新规矩：认知不能外包 - 张兴的实践笔记</title>
+<meta name="description" content="2026-08 至 2026-11 三个月 AI 实践复盘：AI 能压缩检索的时间，压不短认知的距离。垂直领域专家的认知必须来自一线实践，AI 只能当参谋，不能当信息源。附哈佛/BCG 锯齿边界实验与 QJE 客服研究数据。">
+<meta name="author" content="张兴 Zhang Xing">
+<meta property="og:title" content="三个月 AI 实践后，我给自己立了条新规矩：认知不能外包">
+<meta property="og:type" content="article">
+<meta property="og:description" content="三个月 AI 实践复盘：AI 擅长压缩检索，不擅长校准现实。垂直专家的认知必须来自一线实践。">
+<meta property="og:url" content="https://yuanlin88.cn/posts/ai-expertise-from-frontline.html">
+<link rel="canonical" href="https://yuanlin88.cn/posts/ai-expertise-from-frontline.html">
+<link rel="alternate" type="application/rss+xml" title="张兴的实践笔记" href="/rss.xml">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "三个月 AI 实践后，我给自己立了条新规矩：认知不能外包",
+  "description": "三个月 AI 实践复盘：AI 能压缩检索的时间，压不短认知的距离。垂直领域专家的认知必须来自一线实践。",
+  "datePublished": "2026-11-27",
+  "dateModified": "2026-11-27",
+  "inLanguage": "zh-CN",
+  "author": {
+    "@type": "Person",
+    "name": "Zhang Xing",
+    "alternateName": "张兴",
+    "description": "SaaS 商业化与 AI 落地实践者"
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yuanlin88.cn/posts/ai-expertise-from-frontline.html" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "AI 时代还需要深耕一线吗？", "acceptedAnswer": { "@type": "Answer", "text": "需要，而且更需要。AI 把「知道」变便宜了，把「知道得对」变贵了。全网都能查到的方案没有价值，能指出现场哪里不一样的人才稀缺。垂直专家的护城河正在从「掌握信息」转移到「掌握现状」。"} },
+    { "@type": "Question", "name": "怎么判断 AI 给的答案能不能直接用？", "acceptedAnswer": { "@type": "Answer", "text": "三问：有出处和日期吗？我亲手验证过吗？错了谁负责？前两问过滤掉大半幻觉，第三问提醒你：AI 不承担决策后果，所以关键决策的校准必须自己来。"} },
+    { "@type": "Question", "name": "新手应该怎么用 AI？", "acceptedAnswer": { "@type": "Answer", "text": "新手恰恰是 AI 收益最大的人群——斯坦福与 MIT 的研究发现 AI 助手对新手产出的提升可达 30% 以上。但要把 AI 给的方案当「待验证假设」而不是「标准答案」，用一线的反馈去校准它。"} },
+    { "@type": "Question", "name": "垂直行业用 AI 和通用场景有什么不同？", "acceptedAnswer": { "@type": "Answer", "text": "垂直领域公开语料少、隐性知识多，AI 的「锯齿状能力边界」效应更明显：边界内效率提升大，边界外错误率高。哈佛与波士顿咨询的实验显示，边界外任务用 AI 组正确率反而低 19 个百分点。垂直专家的隐性经验正是那把判断边界的尺子。"} },
+    { "@type": "Question", "name": "团队怎么建立「AI 参谋、人验收」的机制？", "acceptedAnswer": { "@type": "Answer", "text": "把三个动作写进交活清单：交活前写清合格线、写清 AI 产出最容易错的纠错点、写清谁在哪个节点验收。验收标准要用现场语言（如「前厅任意员工能独立调出画像」），不用交付语言（如「系统建完」）。"} }
+  ]
+}
+</script>
+<style>
+:root {
+  --ink:#1F2A26; --ink-soft:#5C6662; --ink-faint:#8B948F;
+  --green:#0F6E56; --green-deep:#04342C; --green-mist:#E3F2EC;
+  --paper:#F6F4EF; --card:#FFFFFF; --line:#E6E3DB;
+  --amber:#BA7517; --amber-deep:#633806; --amber-mist:#F7EFE2;
+  --radius:14px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:var(--ink); background:var(--paper); line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+}
+::selection { background:var(--green-mist); color:var(--green-deep); }
+a { color:var(--green); text-decoration:none; }
+a:hover { color:var(--green-deep); }
+.wrap { max-width:720px; margin:0 auto; padding:0 24px; }
+
+header {
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,244,239,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+header .wrap { display:flex; justify-content:space-between; align-items:center; height:60px; }
+.brand { display:flex; align-items:center; gap:10px; font-size:16px; font-weight:600; color:var(--green-deep); }
+.brand .dot { width:10px; height:10px; border-radius:3px; background:linear-gradient(135deg,#0F6E56,#2FA98C); }
+nav a { margin-left:22px; font-size:14px; color:var(--ink-soft); }
+nav a:hover { color:var(--green); }
+
+.article-head { padding:52px 0 8px; }
+.crumb { font-size:12.5px; margin-bottom:18px; }
+.crumb a { color:var(--ink-faint); }
+.crumb a:hover { color:var(--green); }
+.lang-switch { float:right; font-size:12.5px; }
+h1 { font-size:27px; line-height:1.55; color:var(--ink); margin-bottom:18px; letter-spacing:.3px; }
+.meta { display:flex; flex-wrap:wrap; gap:8px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+.meta span {
+  font-size:12.5px; color:var(--ink-soft); background:var(--card);
+  border:1px solid var(--line); padding:4px 12px; border-radius:999px;
+}
+.meta span.hl { color:var(--green-deep); background:var(--green-mist); border-color:rgba(15,110,86,.2); }
+
+main { padding-bottom:20px; }
+.article-body p { font-size:15.5px; margin:18px 0; color:#333A36; }
+.article-body strong { color:var(--ink); }
+h2 {
+  font-size:20px; color:var(--green-deep); margin:42px 0 16px;
+  padding-left:14px; border-left:4px solid var(--green); line-height:1.5;
+}
+blockquote {
+  margin:30px 0; padding:22px 26px; border-radius:12px;
+  background:linear-gradient(135deg,#04342C 0%,#0F5243 100%);
+  color:#DFF2EA; font-size:17px; text-align:center; letter-spacing:1px;
+  box-shadow:0 8px 20px rgba(4,52,44,.18);
+}
+ol { margin:0 0 18px 4px; list-style:none; counter-reset:n; }
+ol li {
+  counter-increment:n; margin-bottom:14px; font-size:15.5px; color:#333A36;
+  padding-left:38px; position:relative;
+}
+ol li::before {
+  content:counter(n); position:absolute; left:0; top:3px;
+  width:24px; height:24px; border-radius:8px;
+  background:var(--green-mist); color:var(--green-deep);
+  font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;
+}
+
+.faq h2 { border-left-color:var(--amber); color:var(--amber-deep); }
+.faq .item {
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:18px 22px; margin-bottom:12px;
+}
+.faq h3 { font-size:15px; color:var(--ink); margin-bottom:8px; display:flex; gap:10px; align-items:baseline; }
+.faq h3::before { content:"Q"; flex:none; color:var(--amber); font-weight:700; font-size:14px; }
+.faq .item p { font-size:14.5px; color:var(--ink-soft); margin:0; }
+.faq .item p::before { content:"A "; color:var(--green); font-weight:700; margin-right:4px; }
+
+.author {
+  margin:44px 0 0; background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); padding:24px 26px;
+  display:flex; gap:20px;
+}
+.author .avatar {
+  flex:none; width:56px; height:56px; border-radius:18px;
+  background:linear-gradient(135deg,#0F6E56 0%,#2FA98C 100%);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:15px; font-weight:800;
+}
+.author .at { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+.author p { font-size:13.5px; color:var(--ink-soft); line-height:1.8; margin:0; }
+.author .links { margin-top:10px; font-size:13px; }
+.author .links a { margin-right:16px; }
+
+.back { text-align:center; margin:36px 0 10px; }
+.back a {
+  display:inline-block; font-size:14px; color:var(--green-deep);
+  background:var(--card); border:1px solid var(--line);
+  padding:10px 26px; border-radius:999px; transition:all .18s;
+}
+.back a:hover { border-color:var(--green); transform:translateY(-2px); box-shadow:0 6px 16px rgba(15,110,86,.12); }
+
+footer { border-top:1px solid var(--line); padding:26px 0; margin-top:30px; background:var(--card); font-size:13px; color:var(--ink-faint); }
+footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+@media (max-width:640px) { h1 { font-size:22px; } .author { flex-direction:column; gap:12px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>张兴 · 实践笔记</div>
+    <nav><a href="/">首页</a><a href="/about.html">关于</a></nav>
+  </div>
+</header>
+
+<div class="article-head">
+  <div class="wrap">
+    <div class="crumb"><a href="/">首页</a> / 文章 &nbsp;&nbsp;<span class="lang-switch">中文 · <a href="/en/posts/domain-expert-knowledge-in-the-ai-era.html">English</a></span></div>
+    <h1>三个月 AI 实践后，我给自己立了条新规矩：认知不能外包</h1>
+    <div class="meta">
+      <span class="hl">AI 落地实践</span>
+      <span>发布于 2026-11-27</span>
+      <span>实践周期 2026-08 至 2026-11</span>
+      <span>作者 张兴</span>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap article-body">
+    <p>近三个月，我几乎把工作流整个搬进了 AI：写方案让它起草，查资料让它检索，连搭独立博客站、配搜索引擎收录，都是一边问一边干。</p>
+    <p>干完这一轮，我反思出一个跟直觉相反的结论：<strong>AI 时代，垂直领域专家的认知，不能全部来自 AI。它必须来自身处一线的实践。</strong></p>
+    <p>这不是保守，也不是怀旧，这是分工问题——AI 擅长的事和你擅长的事，正在被精确地划开。</p>
+
+    <h2>一、AI 最强的能力，恰恰是"说得像对的"</h2>
+    <p>先看一组行业数据。哈佛商学院研究团队与波士顿咨询 2023 年做过一场 758 名顾问的随机实验：在 AI 能力边界之内的任务上，用 AI 的顾问速度快 25.1%、成果质量高 40%；但换到一道被刻意设计成"AI 会给出似是而非答案"的任务上，用 AI 的那组，正确率反而比不用 AI 的低了 19 个百分点（Dell'Acqua 等，《Navigating the Jagged Technological Frontier》，哈佛商学院 WP 24-013，2023，正式刊出于 Organization Science 2025）。</p>
+    <p>研究者把这条线叫"锯齿状的技术边界"：两个看起来难度差不多的任务，可能一个在边界内、一个在边界外。<strong>最危险的不是不会用 AI 的人，是不知道边界在哪的人。</strong></p>
+    <p>我在这三个月里撞了两次这条线。</p>
+    <p>第一次是查一个线上服务的开通方案。同一个问题，三个模型，连错三次——入口早就关闭、平台早已停止支持、渠道早已下架，每一次都错得理直气壮。</p>
+    <p>第二次是上周配独立博客站的 HTTPS 证书。证书卡了一个多小时签不下来，我问 AI，它给了标准的排查流程：查 DNS、查配置、等。都对，也都没用。最后解决问题的是一个教科书上没有的动作：把自定义域名解绑再重新绑一次，触发重新签发，几分钟就好了。2026-11-26 实测。</p>
+    <p>这两件事的共同点：<strong>AI 给的是"全网这么说"，不是"现在是这样"。</strong></p>
+    <p>有人可能会问：AI 天天都在更新，怎么会旧？</p>
+    <p>它不是每条信息都实时的。它依赖训练语料和网页快照，语料天然滞后，快照不带日期。更要命的是它"一致地错"的能力：几个二手来源互相搬运，交叉验证的结果还是同一条旧信息。你问得越多，越觉得它可信——这是最危险的错觉。</p>
+
+    <h2>二、一线实践是唯一的校准器</h2>
+    <p>反过来讲，为什么一线实践不可替代？因为校准只发生在现场。</p>
+    <p>举个自己的例子。给连锁餐饮客户做预订业务诊断时，我们把及格线写得很死：核餐率低于 80% 按比例扣分，备注标签每项不少于 4 个。这些数字为什么这么定？不是从任何报告里读出来的，是从客户门店的实际运营里磨出来的——表谁都能填漂亮，填得对不对，得你现场说了算。</p>
+    <p>再比如做人事系统 AI 排班探索时，实测下来一个门店实施大约节省 2 个人天。这个数字写进方案很漂亮，但它真正的价值不在数字本身，在于我知道它的适用边界：哪类门店适用、什么场景会失效、失效了怎么补救。这些边界条件 AI 给不了，全网也搜不到——因为是我自己跑出来的。</p>
+    <p>还有一次改验收标准。AI 工具把交付提速之后，客户的使用率并没有跟着涨。后来把验收标准从"系统建完"改成"前厅任意一名员工都能独立调出客户画像"，问题才算被问对。<strong>这个改法没有任何模型会主动建议你</strong>——它不知道你的客户前厅长什么样。</p>
+    <p>所以一线实践提供的不是"信息"，是三样 AI 给不了的东西：最新的现状（语料滞后）、真实的颗粒度（数字怎么来的、边界在哪）、判断的责任（谁来签字——AI 签不了）。</p>
+
+    <h2>三、正确的分工：AI 当参谋，人当验收</h2>
+    <p>你可能会再问一句：那是不是该少用 AI？恰恰相反。</p>
+    <p>我这三个月的用法，最后收敛成三层站位：</p>
+    <ol>
+      <li><strong>一线动手，亲手跑一遍。</strong>AI 给的方案对不对，你得有手感才看得出来。哪怕全程用 AI 干，最后一遍自己走通；</li>
+      <li><strong>+1 层，专业纠错。</strong>垂直行业的专业性，不是问得出问题，是指得出 AI 哪句错；</li>
+      <li><strong>+2 层，定标准。</strong>该问什么、什么算做完，这层决定价值。验收标准的改写，永远发生在人身上。</li>
+    </ol>
+    <p>两组研究其实早就说透了这件事。斯坦福数字经济实验室和 MIT 斯隆跟踪了 5000 多名客服：AI 助手让人均产出提升约 15%，但收益几乎全部集中在新手（提升 30% 以上），最资深那批人的提升接近零（Brynjolfsson、Li、Raymond，《Generative AI at Work》，NBER WP 31161，期刊版 Quarterly Journal of Economics 2025）。另一项针对资深程序员的随机实验更直接：在成熟项目上，用 AI 组完成任务反而慢了 19%，而开发者自己还以为快了 20%（METR，2025）。</p>
+    <p>两个结论指向同一件事：<strong>AI 的本质是把高手的经验扩散给新手，而不是替专家长出判断。</strong>越是资深，越要清楚 AI 给不了你什么。</p>
+    <blockquote><strong>AI 能压缩检索的时间，压不短认知的距离。</strong></blockquote>
+
+    <h2>写在最后</h2>
+    <p>三个月用下来，我把 AI 的定位从"信息源"降级成了"参谋"：检索加速、草稿生成、结构翻译，这三件事它干得比我快；现状校准、边界判断、验收签字，这三件事只能发生在现场。</p>
+    <p>垂直专家的护城河，正在从"掌握信息"转移到"掌握现状"。这一条，我写下来当自己的规矩。</p>
+
+    <div class="faq">
+      <h2>常见问题</h2>
+      <div class="item">
+        <h3>AI 时代还需要深耕一线吗？</h3>
+        <p>需要，而且更需要。AI 把"知道"变便宜了，把"知道得对"变贵了。全网都能查到的方案没有价值，能指出现场哪里不一样的人才稀缺。垂直专家的护城河正在从"掌握信息"转移到"掌握现状"。</p>
+      </div>
+      <div class="item">
+        <h3>怎么判断 AI 给的答案能不能直接用？</h3>
+        <p>三问：有出处和日期吗？我亲手验证过吗？错了谁负责？前两问过滤掉大半幻觉，第三问提醒你——AI 不承担决策后果，关键决策的校准必须自己来。</p>
+      </div>
+      <div class="item">
+        <h3>新手应该怎么用 AI？</h3>
+        <p>新手恰恰是 AI 收益最大的人群——斯坦福与 MIT 的研究发现 AI 助手对新手产出的提升可达 30% 以上。但要把 AI 给的方案当"待验证假设"而不是"标准答案"，用一线的反馈去校准它。</p>
+      </div>
+      <div class="item">
+        <h3>垂直行业用 AI 和通用场景有什么不同？</h3>
+        <p>垂直领域公开语料少、隐性知识多，AI 的"锯齿状能力边界"效应更明显：边界内效率提升大，边界外错误率高。哈佛与波士顿咨询的实验显示，边界外任务用 AI 组的正确率反而低 19 个百分点。垂直专家的隐性经验，正是那把判断边界的尺子。</p>
+      </div>
+      <div class="item">
+        <h3>团队怎么建立"AI 参谋、人验收"的机制？</h3>
+        <p>把三个动作写进交活清单：交活前写清合格线、写清 AI 产出最容易错的纠错点、写清谁在哪个节点验收。验收标准要用现场语言（如"前厅任意员工能独立调出客户画像"），不用交付语言（如"系统建完"）。</p>
+      </div>
+    </div>
+
+    <div class="author">
+      <div class="avatar">SaaS</div>
+      <div>
+        <div class="at">关于作者｜张兴</div>
+        <p>张兴，餐饮 SaaS 产品运营与商业增长实践者。曾负责餐饮预订产品、KDS 后厨生产系统，目前负责餐饮人事 SaaS 产品，长期关注餐饮数字化、SaaS 产品经营价值、B2B 增长与 AI 商业化，致力于探索将产品能力转化为企业经营价值的可落地方法。</p>
+        <div class="links">
+          <a href="mailto:leon.zhang.pro@gmail.com">✉️ 邮箱</a>
+          <a href="https://x.com/AiSaaS001" rel="me">𝕏 AiSaaS001</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="back"><a href="/">← 返回首页</a></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 张兴 Zhang Xing · 实践笔记</span>
+    <span>本站内容欢迎引用，请注明作者与出处</span>
+  </div>
+</footer>
+</body>
+</html>

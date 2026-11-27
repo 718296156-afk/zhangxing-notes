@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Should a Domain Expert's Knowledge Come From in the AI Era? - Zhang Xing</title>
+<meta name="description" content="Field evidence from three months of AI practice: AI compresses retrieval time but not the distance to reality. Why domain experts must keep frontline practice as their primary source of knowledge — with data from Harvard/BCG, QJE, and METR studies.">
+<meta name="author" content="Zhang Xing">
+<meta property="og:title" content="Where Should a Domain Expert's Knowledge Come From in the AI Era?">
+<meta property="og:type" content="article">
+<meta property="og:description" content="AI help is strongest for novices and weakest for experts. A practitioner's three-month field note on why frontline practice must stay the primary source of expert knowledge.">
+<meta property="og:url" content="https://yuanlin88.cn/en/posts/domain-expert-knowledge-in-the-ai-era.html">
+<link rel="canonical" href="https://yuanlin88.cn/en/posts/domain-expert-knowledge-in-the-ai-era.html">
+<link rel="alternate" type="application/rss+xml" title="Zhang Xing Notes" href="/rss.xml">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Where Should a Domain Expert's Knowledge Come From in the AI Era?",
+  "description": "AI compresses retrieval time but not the distance between you and reality. Why domain experts must keep frontline practice as their primary source of knowledge.",
+  "datePublished": "2026-11-27",
+  "dateModified": "2026-11-27",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Zhang Xing",
+    "description": "SaaS commercialization and AI implementation practitioner"
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://yuanlin88.cn/en/posts/domain-expert-knowledge-in-the-ai-era.html" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Do domain experts still need frontline practice in the AI era?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — more than ever. AI makes knowing cheap and makes knowing-right expensive. Answers everyone can retrieve have no value; the scarce skill is pointing out where reality differs from the average answer." } },
+    { "@type": "Question", "name": "Who benefits most from AI assistance?", "acceptedAnswer": { "@type": "Answer", "text": "Novices. A large field study of 5,000+ customer support agents found AI raised output about 15% on average but over 30% for novices, with near-zero gains for the most experienced. AI diffuses expert patterns to beginners; it does not grow judgment in experts." } },
+    { "@type": "Question", "name": "Can AI answers be used without verification?", "acceptedAnswer": { "@type": "Answer", "text": "No for consequential decisions. In a Harvard/BCG experiment, consultants using AI on a task deliberately outside AI's competence were 19 percentage points less likely to be correct than those working unassisted. Ask three questions: is there a source and date, have I verified it hands-on, and who bears the cost if it is wrong." } },
+    { "@type": "Question", "name": "Is AI less reliable in specialized industries?", "acceptedAnswer": { "@type": "Answer", "text": "The jagged-frontier effect is stronger in vertical domains because public training data is thinner and tacit knowledge is denser. Tasks that look similar can sit on opposite sides of the capability line, and only field experience tells you which side a task is on." } },
+    { "@type": "Question", "name": "How should a team combine AI use with human judgment?", "acceptedAnswer": { "@type": "Answer", "text": "Define, before delivery: the acceptance bar, the points where AI output is most likely wrong, and who signs off at which checkpoint. Write acceptance criteria in field language (e.g. any frontline employee can pull up the customer profile unaided), not delivery language (system deployed)." } }
+  ]
+}
+</script>
+<style>
+:root {
+  --ink:#1F2A26; --ink-soft:#5C6662; --ink-faint:#8B948F;
+  --green:#0F6E56; --green-deep:#04342C; --green-mist:#E3F2EC;
+  --paper:#F6F4EF; --card:#FFFFFF; --line:#E6E3DB;
+  --amber:#BA7517; --amber-deep:#633806; --amber-mist:#F7EFE2;
+  --radius:14px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Georgia,serif;
+  color:var(--ink); background:var(--paper); line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+::selection { background:var(--green-mist); color:var(--green-deep); }
+a { color:var(--green); text-decoration:none; }
+a:hover { color:var(--green-deep); text-decoration:underline; }
+.wrap { max-width:720px; margin:0 auto; padding:0 24px; }
+
+header {
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,244,239,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+header .wrap { display:flex; justify-content:space-between; align-items:center; height:60px; }
+.brand { display:flex; align-items:center; gap:10px; font-size:16px; font-weight:600; color:var(--green-deep); }
+.brand .dot { width:10px; height:10px; border-radius:3px; background:linear-gradient(135deg,#0F6E56,#2FA98C); }
+nav a { margin-left:22px; font-size:14px; color:var(--ink-soft); }
+nav a:hover { color:var(--green); }
+
+.article-head { padding:52px 0 8px; }
+.crumb { font-size:12.5px; margin-bottom:18px; }
+.crumb a { color:var(--ink-faint); }
+.crumb a:hover { color:var(--green); }
+.lang-switch { float:right; font-size:12.5px; }
+h1 { font-size:27px; line-height:1.5; color:var(--ink); margin-bottom:18px; letter-spacing:-.2px; }
+.meta { display:flex; flex-wrap:wrap; gap:8px; padding-bottom:26px; border-bottom:1px solid var(--line); }
+.meta span {
+  font-size:12.5px; color:var(--ink-soft); background:var(--card);
+  border:1px solid var(--line); padding:4px 12px; border-radius:999px;
+}
+.meta span.hl { color:var(--green-deep); background:var(--green-mist); border-color:rgba(15,110,86,.2); }
+
+main { padding-bottom:20px; }
+.article-body p { font-size:16px; margin:18px 0; color:#333A36; }
+.article-body strong { color:var(--ink); }
+.lead { font-size:18px; line-height:1.7; color:var(--ink); }
+.tldr { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 24px; margin:24px 0; }
+.tldr p.t { font-size:13px; letter-spacing:.12em; color:var(--green-deep); font-weight:700; margin:0 0 10px; }
+.tldr ul { margin-left:18px; }
+.tldr li { font-size:15px; color:#333A36; margin:6px 0; }
+h2 {
+  font-size:20px; color:var(--green-deep); margin:42px 0 16px;
+  padding-left:14px; border-left:4px solid var(--green); line-height:1.45;
+}
+blockquote {
+  margin:30px 0; padding:22px 26px; border-radius:12px;
+  background:linear-gradient(135deg,#04342C 0%,#0F5243 100%);
+  color:#DFF2EA; font-size:17px; text-align:center; letter-spacing:.2px;
+  box-shadow:0 8px 20px rgba(4,52,44,.18);
+}
+table { border-collapse:collapse; width:100%; margin:22px 0; background:var(--card); border-radius:12px; overflow:hidden; font-size:14px; }
+th { background:var(--green-mist); color:var(--green-deep); text-align:left; padding:10px 14px; font-size:13.5px; }
+td { border-top:1px solid var(--line); padding:10px 14px; color:#333A36; }
+ol { margin:0 0 18px 4px; list-style:none; counter-reset:n; }
+ol li {
+  counter-increment:n; margin-bottom:14px; font-size:15.5px; color:#333A36;
+  padding-left:38px; position:relative;
+}
+ol li::before {
+  content:counter(n); position:absolute; left:0; top:3px;
+  width:24px; height:24px; border-radius:8px;
+  background:var(--green-mist); color:var(--green-deep);
+  font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;
+}
+
+.faq h2 { border-left-color:var(--amber); color:var(--amber-deep); }
+.faq .item {
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:18px 22px; margin-bottom:12px;
+}
+.faq h3 { font-size:15px; color:var(--ink); margin-bottom:8px; display:flex; gap:10px; align-items:baseline; }
+.faq h3::before { content:"Q"; flex:none; color:var(--amber); font-weight:700; font-size:14px; }
+.faq .item p { font-size:14.5px; color:var(--ink-soft); margin:0; }
+.faq .item p::before { content:"A "; color:var(--green); font-weight:700; margin-right:4px; }
+
+.author {
+  margin:44px 0 0; background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); padding:24px 26px;
+  display:flex; gap:20px;
+}
+.author .avatar {
+  flex:none; width:56px; height:56px; border-radius:18px;
+  background:linear-gradient(135deg,#0F6E56 0%,#2FA98C 100%);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:15px; font-weight:800;
+}
+.author .at { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+.author p { font-size:13.5px; color:var(--ink-soft); line-height:1.8; margin:0; }
+.author .links { margin-top:10px; font-size:13px; }
+.author .links a { margin-right:16px; }
+
+.back { text-align:center; margin:36px 0 10px; }
+.back a {
+  display:inline-block; font-size:14px; color:var(--green-deep);
+  background:var(--card); border:1px solid var(--line);
+  padding:10px 26px; border-radius:999px; transition:all .18s;
+}
+.back a:hover { border-color:var(--green); transform:translateY(-2px); box-shadow:0 6px 16px rgba(15,110,86,.12); }
+
+footer { border-top:1px solid var(--line); padding:26px 0; margin-top:30px; background:var(--card); font-size:13px; color:var(--ink-faint); }
+footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+@media (max-width:640px) { h1 { font-size:22px; } .author { flex-direction:column; gap:12px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Zhang Xing · Field Notes</div>
+    <nav><a href="/en/index.html">Home</a><a href="/about.html">About</a></nav>
+  </div>
+</header>
+
+<div class="article-head">
+  <div class="wrap">
+    <div class="crumb"><a href="/en/index.html">Home</a> / Posts &nbsp;&nbsp;<span class="lang-switch"><a href="/posts/ai-expertise-from-frontline.html">中文</a> · English</span></div>
+    <h1>Where Should a Domain Expert's Knowledge Come From in the AI Era?</h1>
+    <div class="meta">
+      <span class="hl">AI Implementation</span>
+      <span>Published Nov 27, 2026</span>
+      <span>Field period Aug–Nov 2026</span>
+      <span>By Zhang Xing</span>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap article-body">
+    <p class="lead"><strong>Short answer: from the frontline, not from the model.</strong> After three months of intensive AI practice — building a production website end to end, running AI-assisted client work, and studying how AI search engines index content — my conclusion is that AI compresses retrieval time, but it cannot compress the distance between you and reality. For domain experts, frontline practice must remain the primary source of knowledge.</p>
+
+    <div class="tldr">
+      <p class="t">TL;DR</p>
+      <ul>
+        <li>Field evidence shows AI helps novices most and experts least — the value runs in the opposite direction of what most senior people assume (Brynjolfsson, Li &amp; Raymond, <em>QJE</em> 2025).</li>
+        <li>AI capability is jagged, not smooth: similar-looking tasks sit on opposite sides of the line, and over-trust cut consultant accuracy by 19 percentage points (Dell'Acqua et al., Harvard Business School, 2023).</li>
+        <li>Use AI as a drafting and retrieval accelerator; keep validation, acceptance criteria, and sign-off in the field.</li>
+      </ul>
+    </div>
+
+    <h2>What does the research actually show about AI and expertise?</h2>
+    <p>Two large field experiments, both run on real professionals doing real work, point to the same structure:</p>
+    <table>
+      <tr><th>Study</th><th>Setting</th><th>Key finding</th></tr>
+      <tr>
+        <td>Brynjolfsson, Li &amp; Raymond, <em>Generative AI at Work</em>, <em>Quarterly Journal of Economics</em> 140(2), 2025 (<a href="https://www.nber.org/papers/w31161" rel="noopener">NBER WP 31161</a>)</td>
+        <td>5,179 customer support agents, staggered rollout of a GenAI assistant</td>
+        <td>+15% output on average; over +30% for novices; near-zero (sometimes negative) for the most experienced — AI diffuses top performers' patterns downward</td>
+      </tr>
+      <tr>
+        <td>Dell'Acqua et al., <em>Navigating the Jagged Technological Frontier</em>, Harvard Business School WP 24-013, 2023 (published in <em>Organization Science</em>, 2025)</td>
+        <td>758 BCG consultants, randomized GPT-4 access</td>
+        <td>Inside AI's frontier: +25.1% faster, +40% quality. Outside the frontier: 19 percentage points <em>less</em> likely to be correct than unassisted peers</td>
+      </tr>
+      <tr>
+        <td>METR, <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" rel="noopener">Early-2025 AI RCT</a>, 2025</td>
+        <td>16 experienced open-source developers, 246 real tasks</td>
+        <td>With AI tools, tasks took 19% <em>longer</em> — yet developers believed they were 20% faster</td>
+      </tr>
+    </table>
+    <p>The pattern across all three: <strong>AI is an experience-leveler, not an experience-maker.</strong> It spreads what the best practitioners already know. It does not grow judgment in people who lack the field context to evaluate its output.</p>
+
+    <h2>What did three months of practice teach me that research couldn't?</h2>
+    <p>I hit the jagged frontier twice this quarter.</p>
+    <p>First, I asked three different AI models about how to activate an online service. All three gave confident, well-structured, wrong procedures — the entry point had been closed for over a year, a platform had dropped my region, a payment channel had been removed. Same question, three wrong answers, each delivered with total confidence.</p>
+    <p>Second, while setting up HTTPS for this website, the certificate issuance stalled for over an hour. AI gave me the standard checklist: verify DNS, check configuration, wait. All correct and all useless. What actually solved it — a re-bind of the custom domain to force re-issuance — is not in any textbook. Field-tested November 26, 2026, resolved in minutes.</p>
+    <p>Both failures share one shape: <strong>AI answers with "what the web says," not "what is true right now."</strong></p>
+    <p>You might ask: doesn't AI update constantly? Not the way you'd hope. It relies on training corpora (inherently lagging) and page snapshots (which carry no true dates). Worse, it can be <em>consistently wrong</em>: when secondary sources copy each other, cross-checking them just reproduces the same stale fact. The more you ask, the more trustworthy it feels — that is exactly the dangerous part.</p>
+
+    <h2>Why is frontline practice irreplaceable for calibration?</h2>
+    <p>Because calibration only happens on-site. Two examples from my own work in restaurant SaaS.</p>
+    <p>When designing a booking-operations diagnostic for a regional chain client, we set hard acceptance bars: below 80% verification rate gets scored down; every item needs at least 4 tagging entries. Why those numbers? Not from any report — they were ground out of the client's actual store operations. Anyone can fill in a table beautifully; whether it reflects reality is decided in the field.</p>
+    <p>In another project exploring AI-assisted scheduling for an HR system, a pilot store implementation saved roughly 2 person-days (measured, 2026). The number looks great in a deck, but its real value is that I know its boundaries: which store types it fits, where it breaks, and what to do when it does. Those edge conditions are not searchable — I produced them by running the project.</p>
+    <p>Frontline practice supplies three things AI cannot: <strong>current state</strong> (corpora lag), <strong>true granularity</strong> (where the numbers come from and where they stop holding), and <strong>accountability</strong> (someone must sign off — a model cannot).</p>
+
+    <h2>How should you actually divide the work between AI and field expertise?</h2>
+    <p>My three-month workflow converged on a three-tier stance. Not less AI — better-positioned AI:</p>
+    <ol>
+      <li><strong>Hands-on the floor.</strong> Run the final pass yourself. You can only spot AI's errors if you have the feel of how things actually work;</li>
+      <li><strong>+1: professional correction.</strong> In vertical B2B, expertise is not asking good questions — it is pointing at the exact sentence where AI is wrong;</li>
+      <li><strong>+2: setting the standard.</strong> What to ask and what "done" means — this tier creates the value. In one project, we changed an acceptance criterion from "system deployed" to "any frontline employee can pull up the customer profile unaided." No model would ever suggest that edit; it requires knowing the client's front-of-house.</li>
+    </ol>
+    <blockquote><strong>AI compresses retrieval time. It cannot compress the distance between you and reality.</strong></blockquote>
+
+    <h2>Why it matters</h2>
+    <p>If you are a senior practitioner, the data says AI gives you almost nothing directly — which means your edge now lives entirely in what only you can verify on the ground. If you manage a team, treat AI output as a draft for field validation, not as an answer. And if you are a novice, congratulations: you are AI's biggest beneficiary — just treat every output as a hypothesis awaiting a reality check, not as the standard answer.</p>
+    <p><strong>The bottom line: AI made "knowing" cheap. It made "knowing right" expensive — and that is exactly where domain experts should live.</strong></p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <div class="item">
+        <h3>Do domain experts still need frontline practice in the AI era?</h3>
+        <p>Yes — more than ever. AI makes knowing cheap and knowing-right expensive. Answers anyone can retrieve have no value; the scarce skill is pointing out where reality differs from the average answer.</p>
+      </div>
+      <div class="item">
+        <h3>Who benefits most from AI assistance?</h3>
+        <p>Novices. The QJE study of 5,000+ support agents found over +30% output gains for novices and near-zero for the most experienced. AI diffuses expert patterns to beginners; it does not grow judgment in experts.</p>
+      </div>
+      <div class="item">
+        <h3>Can AI answers be used without verification?</h3>
+        <p>Not for consequential decisions. In the Harvard/BCG experiment, consultants using AI on a deliberately out-of-frontier task were 19 percentage points less likely to be correct. Ask: is there a source and date, have I verified it hands-on, and who bears the cost if it is wrong?</p>
+      </div>
+      <div class="item">
+        <h3>Is AI less reliable in specialized industries?</h3>
+        <p>The jagged-frontier effect is stronger in vertical domains: public training data is thinner and tacit knowledge is denser. Similar-looking tasks can sit on opposite sides of the capability line — only field experience tells you which side a task is on.</p>
+      </div>
+      <div class="item">
+        <h3>How should a team combine AI with human judgment?</h3>
+        <p>Define before delivery: the acceptance bar, the points where AI output is most likely wrong, and who signs off at which checkpoint. Write acceptance criteria in field language ("any frontline employee can pull up the profile unaided"), not delivery language ("system deployed").</p>
+      </div>
+    </div>
+
+    <div class="author">
+      <div class="avatar">SaaS</div>
+      <div>
+        <div class="at">About the author</div>
+        <p>Zhang Xing is a SaaS commercialization and AI implementation practitioner. He has led product operations for restaurant booking and kitchen display systems, and currently works on HR SaaS for restaurant chains. He writes about turning product capabilities into measurable business outcomes, and about applying AI agents to SaaS delivery.</p>
+        <div class="links">
+          <a href="mailto:leon.zhang.pro@gmail.com">✉️ Email</a>
+          <a href="https://x.com/AiSaaS001" rel="me">𝕏 AiSaaS001</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="back"><a href="/en/index.html">← Back to home</a></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Zhang Xing · yuanlin88.cn</span>
+    <span>Quoting welcome with attribution</span>
+  </div>
+</footer>
+</body>
+</html>

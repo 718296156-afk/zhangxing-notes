@@ -7,6 +7,13 @@
     <language>zh-CN</language>
     <atom:link href="https://yuanlin88.cn/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>三个月 AI 实践后，我给自己立了条新规矩：认知不能外包</title>
+      <link>https://yuanlin88.cn/posts/ai-expertise-from-frontline.html</link>
+      <guid>https://yuanlin88.cn/posts/ai-expertise-from-frontline.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0800</pubDate>
+      <description>三个月 AI 实践复盘：AI 能压缩检索的时间，压不短认知的距离。垂直领域专家的认知必须来自一线实践，AI 当参谋，人当验收。</description>
+    </item>
+    <item>
       <title>你问 AI 的答案，可能停在半年前：三次实测暴露的三个盲区</title>
       <link>https://yuanlin88.cn/posts/ai-search-three-blind-spots.html</link>
       <guid>https://yuanlin88.cn/posts/ai-search-three-blind-spots.html</guid>
